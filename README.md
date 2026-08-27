@@ -3,8 +3,8 @@
 bash <(curl -fsSL https://raw.githubusercontent.com/longnguyen2026/winwin/main/install.sh)
 ````
 
-
-**Đúng, đường dẫn `http://localhost:8006/` là cố định** theo cấu hình bạn đã khai báo trong file `compose.yaml`. Nó sẽ không tự động thay đổi trừ khi bạn chủ động sửa cổng (port) hoặc truy cập từ thiết bị khác.
+# SHARE QUA MẠNG LAN
+**Đường dẫn `http://localhost:8006/` là cố định** theo cấu hình bạn đã khai báo trong file `compose.yaml`. Nó sẽ không tự động thay đổi trừ khi bạn chủ động sửa cổng (port) hoặc truy cập từ thiết bị khác.
 
 ---
 
@@ -48,4 +48,42 @@ cd ~/windows-docker && docker compose up -d
 
 ```
 
-Lúc này đường dẫn mới sẽ cố định là: `
+Lúc này đường dẫn mới sẽ cố định là: ...
+
+
+# TRUY CẬP PHẦN MỀM ẢO
+
+Vì máy ảo này chạy dưới dạng **Docker container dịch vụ nền** chứ không phải ứng dụng cài qua Software Manager dạng `.deb`, nên hệ thống **sẽ không tự động tạo icon ứng dụng trong Start Menu** của Linux Mint.
+
+Bạn có 2 cách tiện nhất để mở nhanh từ giao diện:
+
+---
+
+**Cách 1: Tạo một Web App / Shortcut trên Desktop hoặc Menu (Khuyên dùng)**
+
+Tạo một shortcut trên Start Menu để khi bấm vào sẽ mở thẳng tab Windows:
+
+1. Nhấp chuột phải vào màn hình Desktop -> Chọn **Create a new launcher here...** (Tạo trình khởi chạy mới).
+2. Điền thông tin:
+* **Name:** `Windows 10`
+* **Command:** `x-www-browser http://localhost:8006`
+* **Icon:** Bấm vào icon mặc định bên cạnh để chọn biểu tượng Windows hoặc icon tùy thích.
+
+
+3. Nhấn **OK** -> Hệ thống sẽ hỏi có muốn thêm vào Menu hệ thống không, chọn **Yes**.
+
+---
+
+**Cách 2: Mở qua ứng dụng Remmina (Nếu thích dạng cửa sổ phần mềm độc lập)**
+
+Linux Mint có sẵn ứng dụng kết nối màn hình máy ảo/máy tính từ xa:
+
+1. Vào Start Menu -> Tìm ứng dụng **Remmina** (hoặc *Remote Desktop Client*).
+
+
+2. Tại thanh địa chỉ kết nối, nhập: `localhost:3389`
+
+3. Chọn giao thức **RDP** -> Bấm **Connect** (User: `docker`, không mật khẩu).
+
+
+4. Bạn có thể lưu lại profile này trong Remmina để lần sau chỉ cần mở Remmina và bấm đúp chuột vào.
